@@ -1,15 +1,19 @@
 import express from 'express';
-import connection from './database/connection.js'
 import Product from './models/product.js'
+import Category from './models/category.js';
+import sequelize from './database/connection.js';
+
+await sequelize.sync({ force: true });
 
 const app = express();
 
 app.get("/test", async (req, res) => {
-    console.log(Product);
-    Product.create({ id: 1 })
-    res.send({ message: 'test' })
+    const createdProduct = await Product.create({ name: 'test product' });
+    console.log(createdProduct.dataValues);
+
+    res.send({ data: createdProduct.dataValues })
 })
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => console.log('Server is listening on port', PORT));

@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from '../database/connection.js';
 
-const Product = sequelize.define('products', {
+const Product = sequelize.define('product', {
    id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -21,9 +21,7 @@ const Product = sequelize.define('products', {
       defaultValue: 0,
    }
 
-})
-
-Product.sync();
+});
 
 export default Product;
 

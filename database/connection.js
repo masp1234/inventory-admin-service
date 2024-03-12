@@ -1,23 +1,13 @@
+import 'dotenv/config';
 import { Sequelize } from 'sequelize';
 
 const connection = new Sequelize({
-    dialect: 'mysql',
-    host: 'localhost',
-    username: 'root',
-    password: '123123',
-    database: 'inventory_admin'
+    dialect: process.env.DB_DIALECT,
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 })
-
-async function testConnection() {
-    try {
-      await connection.authenticate();
-      console.log('Connection has been established successfully.');
-    } catch (error) {
-      console.error('Unable to connect to the database:', error);
-    }
-  }
-
-await testConnection();
 
 export default connection;
 
