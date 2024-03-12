@@ -14,6 +14,6 @@ app.get("/test", async (req, res) => {
     res.send({ data: createdProduct.dataValues })
 })
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 app.listen(PORT, () => console.log('Server is listening on port', PORT));
